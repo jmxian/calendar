@@ -1,0 +1,20 @@
+/* components/search/search.wxss */
+@import "../../colorui/main.wxss";
+@import "../../colorui/icon.wxss";
+.search-box{
+  width: 90%;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 5%;
+  border-radius: 20px;
+  background-color: rgba(255, 252, 255, 0.7);
+} 
+.search-img{
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

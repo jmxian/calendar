@@ -1,0 +1,7 @@
+<!--components/search/search.wxml-->
+<view class="search">
+  <view class="search-box">
+    <text class="cuIcon-search search-img"></text>
+    <view>请输入关键词</view>
+  </view>
+</view>

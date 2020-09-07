@@ -1,0 +1,38 @@
+<!--components/calendar/calendar.wxml-->
+<view>
+  <view class="year" style="padding-left:5%;font-size:20px">{{year}}年</view>
+  <view class="month" style="padding-left:5%;font-size:16px">{{month}}月</view>
+  <!-- 搜索框 -->
+  <!-- <search></search> -->
+  <view class="week">
+    <view wx:for="{{weekArr}}" style="flex:1;text-align:center;font-size:12px">{{item}}</view>
+  </view>
+  <view class="date" bindtouchmove="caHandletouchmove" bindtouchstart="caHandletouchtart" bindtouchend="caHandletouchend" style="animation:{{show==true?'show':'hide'}} 1s 1;animation-fill-mode:forwards;">
+    <view class="date-box {{show==true?'show':''}}" >
+      <view class="day" wx:for="{{dateArr}}" style="margin-left:{{index==0?firstDay*14:''}}%;font-size:{{day==index+1?'22px':''}};color:{{day==index+1?'rgba(255,103,103,1)':''}}">{{item.id}}
+        <text wx:if="{{item.eventListArr.length>0?true:false}}" class="bg-red tip">{{item.eventListArr.length}}</text>
+      </view>
+    </view>
+    <view class="date-box {{show==true?'':'show'}}" >
+      <view class="day" wx:for="{{spanArr}}" style="margin-left:{{item.id==1?firstDay*14:''}}%;font-size:{{day==item.id?'22px':''}};color:{{day==item.id?'rgba(255,103,103,1)':''}}">{{item.id}}
+      <text wx:if="{{item.eventListArr.length>0?true:false}}" class="bg-red tip">{{item.eventListArr.length}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 记录事件 -->
+   <scroll-view scroll-y class="event-box" style="width:100%;height:75vh">
+    <view class="event" wx:for="{{eventList}}"  style="animation:{{eventList[index].animation.length>0?eventList[index].animation:''}} 0.3s 1 linear forwards" bindtouchmove="handletouchmove" bindtouchstart="handletouchtart" bindtouchend="handletouchend" data-id="{{index}}">
+        <view class="{{item.class_color}} shu"></view>
+        <view class="title">{{item.title}}
+          <text wx:if="{{item.finish}}" class="cuIcon-check lg text-green"></text>
+        </view>
+        <view class="time">{{item.time}}</view>
+        <view class="btn-box">
+          <text class="cuIcon-delete bg-orange lg text-white delete" bindtap="delete" data-id="{{item._id}}" data-index="{{index}}"></text>
+          <text wx:if="{{!item.finish}}" class="cuIcon-squarecheck bg-cyan lg text-white squarecheck" bindtap="squarecheck" data-id="{{item._id}}" data-index="{{index}}"></text>
+          <text wx:if="{{item.finish}}" class="bg-cyan text-white squarecheck" style="font-size:12px;">已完成</text>
+        </view>
+    </view>
+    <view wx:if="{{eventList.length>0?false:true}}" class="event" style="justify-content:center">你还没有备忘录事件，点击👇添加</view>
+  </scroll-view>
+</view>

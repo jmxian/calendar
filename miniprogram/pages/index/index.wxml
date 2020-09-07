@@ -1,0 +1,37 @@
+<view class="page">
+  <cu-custom id="cu-custom" isBack="{{false}}" bgImage="../../images/bg.jpg" eventList="{{event_list}}" bind:updataArr="updataArr"></cu-custom>
+  <text class="cuIcon-roundadd lg text-cyan icon-add" bindtap="showForm"></text>
+
+  <!-- 表单 -->
+  <view wx:if="{{show}}" class="mask" bindtap="hideForm"></view>
+  <form wx:if="{{show}}" class="form">
+    <view class="form-title">添加一个月内事件</view>
+    	<view class="cu-form-group">
+        <view class="title">颜色</view>
+        <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+          <view class="picker">
+            {{picker[index]}}
+          </view>
+          <view class="{{picker[index]}}" style="width:15px;height:15px;position:absolute;top:30%;"></view>
+        </picker>
+      </view>
+    <view class="cu-form-group">
+      <view class="title">事件</view>
+      <input placeholder="短活动标题" bindinput="getTitle" value="{{title}}"></input>
+    </view>
+  	<view class="cu-form-group">
+      <view class="title">记录事件日期</view>
+      <picker mode="date" value="{{date}}" start="{{start}}" end="{{end}}" bindchange="DateChange">
+        <view class="picker">
+          {{date}}
+        </view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">事件具体时间</view>
+      <input placeholder="今天" bindinput="getTime" value="{{time}}"></input>
+    </view>
+    <button class="cu-btn block bg-orange lg" style="position:relative;top:10vh" bindtap="saveData">
+      <text class="cuIcon-upload"></text>提交</button>
+  </form>
+</view>
