@@ -35,7 +35,7 @@ Page({
   getTime(e){
     this.setData({time:e.detail.value})
   },
-  saveData:util.debounce(function(){
+  saveData:util.debounce(function(e){
     let that = this
     let class_color = this.data.picker[this.data.index]
     let title = this.data.title

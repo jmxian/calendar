@@ -25,6 +25,7 @@
         <view class="{{item.class_color}} shu"></view>
         <view class="title">{{item.title}}
           <text wx:if="{{item.finish}}" class="cuIcon-check lg text-green"></text>
+           <view class="title-date">{{item.date}}</view>
         </view>
         <view class="time">{{item.time}}</view>
         <view class="btn-box">

@@ -1,12 +1,16 @@
 function debounce(fn,wait){
-  let timer = null;
+  let timer = null
   return function(e){
-    var args = arguments;
-    var that = this;
-    timer && clearTimeout(timer);
+    var args = arguments
+    var that = this
+    var now = !timer;
+    timer && clearTimeout(timer)
     timer = setTimeout(()=>{
-      fn.call(that,e,args);
+      timer = null;
     },wait)
+    if(now){
+      fn.apply(this,args);
+    }
   }
 }
 

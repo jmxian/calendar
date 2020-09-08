@@ -46,6 +46,11 @@
   width: 160px;
   height: 40px;
 }
+.title-date{
+  position: relative;
+  color: #ccc;
+  font-size: 10px;
+}
 @keyframes leftSlider {
   from {
     left: 0px;
